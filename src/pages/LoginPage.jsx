@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { useForm } from "../hooks/useForm";
 
 export const LoginPage = () => {
@@ -9,8 +8,6 @@ export const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Formulario funcionando:", formState);
-    alert("Funciona 👍");
   };
 
   return (
