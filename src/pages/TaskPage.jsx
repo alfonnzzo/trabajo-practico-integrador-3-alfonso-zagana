@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Loading from "../components/Loading";
-import useForm from "../hooks/useForm";
+import { Loading } from "../components/Loading";
+import { useForm } from "../hooks/useForm";
 
-const TasksPage = () => {
+export const TaskPage = () => {
   // Estados de la lista de tareas
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -319,5 +319,3 @@ const TasksPage = () => {
     </main>
   );
 };
-
-export default TasksPage;
