@@ -1,35 +1,19 @@
 import { useState } from "react";
 
-export const useForm = (initialState) => {
-  const [formState, setFormState] = useState(initialState);
-  const { username, password } = formState;
+export const useForm = (initialValues = {}) => {
+  const [values, setValues] = useState(initialValues);
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setValues((prevValues) => ({ ...prevValues, [name]: newValue }));
+    setValues({ ...values, [name]: newValue });
   };
 
   const handleReset = () => {
-    setFormState(initialState);
+    setValues(initialValues);
   };
 
-  const handleSubmit = (event, onLogin) => {
-
-    event.preventDefault();
-
-    handleReset();
-
-    console.log(formState);
-  };
-
-  return {
-    formState,
-    ...formState,
-    handleChange,
-    handleSubmit,
-  };
+  return { values, setValues, handleChange, handleReset };
 };
+
